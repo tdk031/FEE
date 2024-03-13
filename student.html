@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Latest compiled and minified CSS -->
+    <link href="../bootstrap.min.css" rel="stylesheet">
+    <!-- Link to Font Awesome CSS -->
+    <link rel="stylesheet" href="../all.min.css">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <form action="" id="studentForm">
+            <h3 class="text-center">QUẢN LÝ HỌC SINH <span style="color: orange;">TRƯỜNG THPT ABC</span></h3>
+            <div class="form-row">
+                <div class="form-groud col-md-6">
+                    <label for="hoTen">Họ và tên học sinh</label>
+                    <input type="text" class="form-control" id="hoTen" placeholder="Họ và tên học viên">
+                    <span id="hoTenCheck" class="text-danger"></span>
+                </div>
+                <div class="form-groud col-md-3">
+                    <label>Giới tính</label> <br>
+                    <div class="form-check-inline ">
+                        <div class="form-check pl-0">
+                            <input type="radio" class="form-check-input " name="gioiTinh" id="nam" value="nam">
+                            <label for="nam" class="form-check-label">Nam</label>
+                        </div>
+                        <div class="form-check ">
+                            <input type="radio" class="form-check-input" name="gioiTinh" id="nu" value="nu">
+                            <label for="nu" class="form-check-label">Nữ</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="radio" class="form-check-input" name="gioiTinh" id="khac" value="khac">
+                            <label for="nam" class="form-check-label">Khác</label>
+                        </div>
+                    </div>
+                    <br>
+                    <span id="gioiTinhCheck" class="text-danger"></span>
+                </div>
+                <div class="form-groud col-md-3">
+                    <label for="hoTen">Ngày sinh</label>
+                    <input type="date" class="form-control" id="ngaySinh">
+                    <span id="ngaySinhCheck" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-groud col-md-6">
+                    <label for="hoTen">Khối lớp học</label>
+                    <select class="form-control" id="khoiLop">
+                        <option disabled selected value="">Chọn khối lớp học...</option>
+                        <option>Khối 10</option>
+                        <option>Khối 11</option>
+                        <option>Khối 12</option>
+                    </select>
+                    <span id="khoiLopCheck" class="text-danger"></span>
+                </div>
+                <div class="form-groud col-md-6">
+                    <label for="hoTen">Khối lớp học</label>
+                    <select class="form-control" id="inputClass">
+                        <option disabled selected value="">Chọn lớp học...</option>
+                        <optgroup id="inputGrade-11" label="11">
+                            <option value="10A">10A</option>
+                            <option value="10B">10B</option>
+                        </optgroup>
+                        <optgroup id="inputGrade-11" label="11">
+                            <option value="11A">11A</option>
+                            <option value="11B">11B</option>
+                        </optgroup>
+                        <optgroup id="inputGrade-12" label="12">
+                            <option value="12A">12A</option>
+                            <option value="12B">12B</option>
+                        </optgroup>
+                    </select>
+                    <span id="lopHocCheck" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-groud col-md-4">
+                    <label for="diemToan">Điểm môn Toán</label>
+                    <input type="number" class="form-control label-text-right" id="diemToan" placeholder="HTML vs CSS"
+                        aria-label="">
+                    <span id="diemToanCheck" class="text-danger"></span>
+                </div>
+                <div class="form-groud col-md-4">
+                    <label for="diemLy">Điểm môn Lý</label>
+                    <input type="number" class="form-control" id="diemLy" placeholder="JavaScript">
+                    <span id="diemLyCheck" class="text-danger"></span>
+                </div>
+                <div class="form-groud col-md-4">
+                    <label for="diemHoa">Điểm môn Hóa</label>
+                    <input type="number" class="form-control" id="diemHoa" placeholder="jQuery">
+                    <span id="diemHoaCheck" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row pt-3">
+                <div class="col-auto" id="save">
+                    <button class="btn button-tomato" id="submit-btn" type="submit">Lưu thông tin</button>
+                </div>
+        </form>
+
+    </div>
+    <h3 class="text-center">DANH SÁCH HỌC SINH</h3>
+    <div class="row" id="search">
+        <div class="col-sm-3 d-flex align-items-center">
+            <label class="font-weight-bold" for="searchName">Nhập tên học sinh cần tìm kiếm</label>
+        </div>
+        <div class="col-sm-8">
+            <input class="form-control" type="text" name="" id="searchName" placeholder="Nhập tên học sinh">
+            <div id="search-check" class="text-danger"></div>
+        </div>
+        <div class="col-sm-1">
+            <button class="btn btn-success" id="search-btn" type="submit">Search</button>
+        </div>
+    </div>
+    <table class="table mt-3" id="studentTable">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Họ tên</th>
+                <th>Giới tính</th>
+                <th>Ngày sinh</th>
+                <th>Khối lớp học</th>
+                <th>Lớp học</th>
+                <th>Điểm Toán</th>
+                <th>Điểm Lý</th>
+                <th>Điểm Hóa</th>
+                <th>Điểm TB</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="tableBody">
+            <!-- Data will be added here -->
+        </tbody>
+        <tfoot>
+            <!-- Data will be added here -->
+        </tfoot>
+    </table>
+    </div>
+    <script src="../jquery-3.5.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            let students = [];
+            loadStudentFromLocalStorage();
+
+            // Sự kiện khi trường input thay đổi
+            $('#hoTen, #ngaySinh, #diemToan, #diemLy, #diemHoa').on('input', function () {
+                validateStudent();
+            });
+
+            // Lưu dữ liệu vào localStorage
+            function saveStudentsToLocalStorage() {
+                localStorage.setItem('students', JSON.stringify(students));
+            }
+
+            // Load dữ liệu từ localStorage
+            function loadStudentFromLocalStorage() {
+                let storedStudents = localStorage.getItem('students');
+                if (storedStudents) {
+                    students = JSON.parse(storedStudents);
+                    displayStudents(); // Hiển thị dữ liệu từ localStorage
+                }
+            }
+
+            // Sự kiện khi chọn khối lớp
+            $('#khoiLop').change(function () {
+                var selectedGrade = $(this).val();
+                if (selectedGrade === "") {
+                    $('#khoiLopError').text('Vui lòng chọn khối lớp');
+                    $('#inputClass').empty(); // Xóa danh sách lớp học
+                } else {
+                    $('#khoiLopError').text('');
+                    var classes = getClassesByGrade(selectedGrade);
+                    displayClasses(classes);
+                }
+            });
+
+            $('#studentForm').submit(function (event) {
+                event.preventDefault(); // Ngăn chặn hành vi mặc định của form
+                addOrUpdateStudent();
+            });
+
+            $('#searchName').on('input', function () {
+                var searchName = $(this).val().trim();
+                if (searchName === '') {
+                    $('#search-check').addClass('error-message').text('Vui lòng nhập họ và tên học sinh cần tìm kiếm.');
+                } else if (!/^[a-zA-Z\s]+$/.test(searchName)) {
+                    $('#search-check').addClass('error-message').text('Họ và tên học sinh chỉ chứa các ký tự chữ và khoảng trắng.');
+                } else {
+                    $('#search-check').text('');
+                }
+            });
+
+            $('#search-btn').click(function () {
+                var searchName = $('#searchName').val().trim().toLowerCase();
+
+                // Lặp qua từng hàng trong bảng hiện tại
+                $('#studentTable tbody tr').each(function () {
+                    var studentName = $(this).find('td:eq(1)').text().toLowerCase(); // Lấy tên học sinh từ cột thứ hai trong từng hàng
+                    if (studentName.includes(searchName)) {
+                        // Nếu tìm thấy kết quả, hiển thị hàng đó
+                        $(this).show();
+                    } else {
+                        // Nếu không tìm thấy, ẩn hàng đó
+                        $(this).hide();
+                    }
+                });
+            });
+
+            function validateStudent() {
+                var isValid = true;
+                var hoTen = $('#hoTen').val().trim();
+                var ngaySinh = $('#ngaySinh').val();
+                var diemToan = parseFloat($('#diemToan').val());
+                var diemLy = parseFloat($('#diemLy').val());
+                var diemHoa = parseFloat($('#diemHoa').val());
+
+                // Kiểm tra và hiển thị lỗi
+                if (hoTen === '') {
+                    $('#hoTenCheck').text('Họ tên không được bỏ trống');
+                    isValid = false;
+                } else if (!/^[a-zA-Z\s]+$/.test(hoTen)) {
+                    $('#hoTenCheck').text('Họ tên chỉ chứa các ký tự alphabet và khoảng trắng');
+                    isValid = false;
+                } else {
+                    $('#hoTenCheck').text('');
+                }
+
+                if (!$("input[name='gioiTinh']:checked").val()) {
+                    $('#gioiTinhCheck').text('Vui lòng chọn giới tính');
+                    isValid = false;
+                } else {
+                    $('#gioiTinhCheck').text('');
+                }
+
+                if (!ngaySinh) {
+                    $('#ngaySinhCheck').text('Ngày sinh là bắt buộc');
+                    isValid = false;
+                } else if (new Date(ngaySinh) >= new Date()) {
+                    $('#ngaySinhCheck').text('Ngày sinh phải nhỏ hơn ngày hiện tại');
+                    isValid = false;
+                } else {
+                    $('#ngaySinhCheck').text('');
+                }
+
+                if (isNaN(diemToan) || diemToan < 0 || diemToan > 10 || !/^\d+(\.\d{1,2})?$/.test(diemToan)) {
+                    $('#diemToanCheck').text('Điểm Toán không hợp lệ');
+                    isValid = false;
+                } else {
+                    $('#diemToanCheck').text('');
+                }
+
+                if (isNaN(diemLy) || diemLy < 0 || diemLy > 10 || !/^\d+(\.\d{1,2})?$/.test(diemLy)) {
+                    $('#diemLyCheck').text('Điểm Lý không hợp lệ');
+                    isValid = false;
+                } else {
+                    $('#diemLyCheck').text('');
+                }
+
+                if (isNaN(diemHoa) || diemHoa < 0 || diemHoa > 10 || !/^\d+(\.\d{1,2})?$/.test(diemHoa)) {
+                    $('#diemHoaCheck').text('Điểm Hóa không hợp lệ');
+                    isValid = false;
+                } else {
+                    $('#diemHoaCheck').text('');
+                }
+
+                return isValid;
+            }
+
+            $('#searchName').on('input', function () {
+                var searchName = $(this).val().trim();
+                if (searchName === '') {
+                    $('#search-check').addClass('error-message').text('Vui lòng nhập họ và tên học sinh cần tìm kiếm.');
+                } else if (!/^[a-zA-Z\s]+$/.test(searchName)) {
+                    $('#search-check').addClass('error-message').text('Họ và tên học sinh chỉ chứa các ký tự chữ và khoảng trắng.');
+                } else {
+                    $('#search-check').text('');
+                }
+            });
+
+            $('#search-btn').click(function () {
+                var searchName = $('#searchName').val().trim().toLowerCase();
+
+                // Lặp qua từng hàng trong bảng hiện tại
+                $('#studentTable tbody tr').each(function () {
+                    var studentName = $(this).find('td:eq(1)').text().toLowerCase(); // Lấy tên học sinh từ cột thứ hai trong từng hàng
+                    if (studentName.includes(searchName)) {
+                        // Nếu tìm thấy kết quả, hiển thị hàng đó
+                        $(this).show();
+                    } else {
+                        // Nếu không tìm thấy, ẩn hàng đó
+                        $(this).hide();
+                    }
+                });
+            });
+
+
+            //Hàm nhấn nút delete
+            $('#studentTable').on('click', '.btn-outline-danger', function () {
+                var index = $(this).closest('tr').index();
+                var confirmation = confirm("Bạn có chắc muốn xóa Row thông tin này không?");
+                if (confirmation) {
+                    deleteStudent(index);
+                }
+            });
+
+
+            function deleteStudent(index) {
+                students.splice(index, 1);
+                saveStudentsToLocalStorage();
+
+                displayStudents();
+                displayFooterRowCount(); // Hiển thị footer row
+            }
+
+            function addOrUpdateStudent(indexToUpdate) {
+                if (validateStudent()) {
+                    let hoTen = $('#hoTen').val().trim();
+                    let gioiTinh = $("input[name='gioiTinh']:checked").val();
+                    let ngaySinh = $('#ngaySinh').val();
+                    let khoiLop = $('#khoiLop').val();
+                    let lopHoc = $('#inputClass').val();
+                    let diemToan = parseFloat($('#diemToan').val());
+                    let diemLy = parseFloat($('#diemLy').val());
+                    let diemHoa = parseFloat($('#diemHoa').val());
+
+                    let diemTB = (diemToan + diemLy + diemHoa) / 3;
+
+                    let student = {
+                        hoTen: hoTen,
+                        gioiTinh: gioiTinh,
+                        ngaySinh: ngaySinh,
+                        khoiLop: khoiLop,
+                        lopHoc: lopHoc,
+                        diemToan: diemToan,
+                        diemLy: diemLy,
+                        diemHoa: diemHoa,
+                        diemTB: diemTB
+                    }
+
+                    if (indexToUpdate !== undefined && indexToUpdate !== null) {
+                        // Cập nhật thông tin học sinh
+                        students[indexToUpdate] = student;
+                    } else {
+                        //Thêm học sinh mới
+                        students.push(student);
+                    }
+
+                    saveStudentsToLocalStorage(); // Lưu vào localStorage
+                    displayStudents(); // Cập nhật bảng hiển thị
+                    resetForm(); // Đặt lại form sau khi thêm hoặc cập nhật thành công
+                    displayFooterRowCount(); // Hiển thị footer row
+                }
+
+            }
+
+            function displayStudents() {
+                $('#studentTable tbody').empty();
+                for (let i = 0; i < students.length; i++) {
+                    let student = students[i]
+                    let tr = $('<tr>').append(
+                        $('<td>').text(i + 1),
+                        $('<td>').text(student.hoTen),
+                        $('<td>').text(student.gioiTinh),
+                        $('<td>').text(formatDate(student.ngaySinh)),
+                        $('<td>').text(student.khoiLop),
+                        $('<td>').text(student.lopHoc),
+                        $('<td>').text(student.diemToan),
+                        $('<td>').text(student.diemLy),
+                        $('<td>').text(student.diemHoa),
+                        $('<td>').text(student.diemTB.toFixed(2)),
+                        $('<td>').append(
+                            $('<button>').html('<i class="far fa-edit"></i>').addClass('btn btn-outline-warning mr-2').click(editStudent.bind(null, i)),
+                            $('<button>').html('<i class="far fa-trash-alt"></i>').addClass('btn btn-outline-danger')
+                        ),
+                    );
+                    $('#studentTable tbody').append(tr);
+                }
+            }
+
+            // Hàm lấy danh sách các lớp học tương ứng với khối lớp
+            function getClassesByGrade(grade) {
+                var classes = [];
+                switch (grade) {
+                    case "Khối 12":
+                        classes = ["12A", "12B"];
+                        break;
+                    case "Khối 11":
+                        classes = ["11A", "11B"];
+                        break;
+                    case "Khối 10":
+                        classes = ["10A", "10B"];
+                        break;
+                    default:
+                        break;
+                }
+                return classes;
+            }
+
+            // Hàm hiển thị danh sách lớp học trong dropdown menu
+            function displayClasses(classes) {
+                $('#inputClass').empty();
+                $.each(classes, function (index, value) {
+                    $('#inputClass').append($('<option>').text(value).attr('value', value));
+                });
+            }
+
+            //Hàm đặt lại form
+            function resetForm() {
+                // Đặt lại giá tri của các trường input về rỗng
+                $('#hoTen, #ngaySinh, #diemToan, #diemLy, #diemHoa').val('');
+                // Đặt lại giá trị của các trường radio về giá trị mặt định;
+                $("input[name='gioiTinh']").prop('checked', false);
+                // Đặt lại giá trị của các trường select về giá trị mặc định
+                $('#khoiLop, #inputClass').val('');
+                // Đặt lại thông báo lỗi về rỗng
+                $('.error-message').text('');
+                // Đặt lại văn bản của nút [Cập nhật thông tin] thành [Lưu thông tin]
+                $('#submit-btn').text('Lưu thông tin');
+                // Xóa sự kiện click trên nút [Cập nhật thông tin]
+                $('#submit-btn').off('click');
+            }
+            //Hàm chuyển đổi ngày thàng định dạng dd/mm/yyyy
+            function formatDate(dateString) {
+                let date = new Date(dateString);
+                let day = date.getDate();
+                let month = date.getMonth();
+                let year = date.getFullYear();
+                return (day < 10 ? '0' : '') + day + '/' + (month < 10 ? '0' : '') + month + '/' + year;
+            }
+
+            function editStudent(index) {
+                // Lấy thông tin của học sinh từ mảng students
+                let student = students[index];
+
+                $('#hoTen').val(student.hoTen);
+                $('#ngaySinh').val(student.ngaySinh);
+                $('#khoiLop').val(student.khoiLop);
+                // Thiết lập giá trị lớp học tương ứng khi chọn khối lớp
+                let classes = getClassesByGrade(student.khoiLop);
+                displayClasses(classes);
+                $('#inputClass').val(student.lopHoc);
+                $('#diemToan').val(student.diemToan);
+                $('#diemLy').val(student.diemLy);
+                $('#diemHoa').val(student.diemHoa);
+
+                // Đặt thuộc tính `checked` cho radio button giới tính
+                if (student.gioiTinh === "Nam") {
+                    $('#nam').prop('checked', true);
+                    $('#nu').prop('checked', false);
+                    $('#khac').prop('checked', false);
+                } else if (student.gioiTinh === "Nữ") {
+                    $('#nam').prop('checked', false);
+                    $('#nu').prop('checked', true);
+                    $('#khac').prop('checked', false);
+                } else {
+                    $('#nam').prop('checked', false);
+                    $('#nu').prop('checked', false);
+                    $('#khac').prop('checked', true);
+                }
+
+                // Thay đổi văn bản của nút [Lưu thông tin] thành [Cập nhật thông tin]
+                $('#submit-btn').text('Cập nhật thông tin');
+
+                $('#submit-btn').off('submit').on('click', function (event) {
+                    event.preventDefault();
+                    addOrUpdateStudent(index); // Truyền chỉ số hàng để cập nhật
+                });
+            }
+
+            //Hàm đếm số học sinh của khối
+            function countStudentsByGrade() {
+                var countGrade12 = 0;
+                var countGrade11 = 0;
+                var countGrade10 = 0;
+
+                for (var i = 0; i < students.length; i++) {
+                    var student = students[i];
+                    switch (student.khoiLop) {
+                        case "Khối 12":
+                            countGrade12++;
+                            break;
+                        case "Khối 11":
+                            countGrade11++;
+                            break;
+                        case "Khối 10":
+                            countGrade10++;
+                            break;
+                        default:
+                            break;
+                    }
+                }
+
+                return {
+                    grade12: countGrade12,
+                    grade11: countGrade11,
+                    grade10: countGrade10
+                };
+            }
+
+            function displayFooterRowCount() {
+                var counts = countStudentsByGrade();
+
+                $('#footerRow').remove(); // Xóa dòng footer cũ (nếu có)
+
+                var footerRow = $('<tr id="footerRow">').append(
+                    $('<td colspan="12">').html('Tổng số học sinh: <br>' +
+                        'Khối 12: ' + counts.grade12 + '<br>' +
+                        'Khối 11: ' + counts.grade11 + '<br>' +
+                        'Khối 10: ' + counts.grade10)
+                );
+
+                $('#studentTable tfoot').append(footerRow); // Thêm dòng footer vào cuối bảng
+            }
+
+            displayFooterRowCount();
+        });
+    </script>
+</body>
+
+</html>
